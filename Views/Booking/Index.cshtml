@@ -1,0 +1,78 @@
+﻿@model IEnumerable<_10453370_POE_WebApp.Models.Booking>
+
+@{
+    ViewData["Title"] = "All Bookings";
+}
+
+<h1>Index</h1>
+
+
+@if (TempData["Error Message"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error Message"]
+    </div>
+}
+@if (TempData["Success Message"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Success Message"]
+    </div>
+}
+@if (TempData["SuccessC Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessC Message"]
+    </div>
+}
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Booking ID
+            </th>
+            <th>
+                Venue ID
+            </th>
+            <th>
+                Event ID
+            </th>
+            <th>
+                Booking Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var booking in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => booking.Booking_ID)
+            </td>
+            <td>
+                    
+                    @Html.DisplayFor(modelItem => booking.Venue_ID)
+            </td>
+            <td>
+                    
+                    @Html.DisplayFor(modelItem => booking.Event_ID)
+            </td>
+            <td>
+                @booking.Booking_Date.ToShortDateString()
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@booking.Booking_ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@booking.Booking_ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@booking.Booking_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

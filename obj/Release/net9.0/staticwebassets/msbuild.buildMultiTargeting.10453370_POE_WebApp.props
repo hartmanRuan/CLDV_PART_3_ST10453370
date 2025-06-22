@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\10453370_POE_WebApp.props" />
+</Project>
